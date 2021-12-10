@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+cd state
+
+terraform init
+terraform apply -auto-approve
+
+cd -

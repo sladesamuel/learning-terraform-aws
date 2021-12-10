@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+layer_name=$1
+
+[[ -z "$layer_name" ]] && {
+  echo "No layer name provided"
+  exit 1
+}
+
+cd "$layer_name"
+
+terraform init
+
+cd -

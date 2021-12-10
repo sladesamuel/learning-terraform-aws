@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -e
+
+layer_name=$1
+
+[[ -z "$layer_name" ]] && {
+  echo "No layer name provided"
+  exit 1
+}
+
+cd "$layer_name"
+
+ARGS=()
+[[ "$AUTO_APPROVE" == "true" ]] && {
+  ARGS+=("-auto-approve")
+}
+
+terraform destroy "${ARGS[@]}"
+
+cd -
