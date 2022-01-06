@@ -1,5 +1,6 @@
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "slade-sandbox-terraform-state"
+  bucket        = "slade-sandbox-terraform-state"
+  force_destroy = true
 
   versioning {
     enabled = true
