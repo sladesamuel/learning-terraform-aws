@@ -6,3 +6,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: make validate
+  ensure-correct-formatting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: terraform fmt -check -recursive
