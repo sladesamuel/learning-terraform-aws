@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+declare -a layers=(
+  state
+  infra
+)
+
+# Make sure the layers are initialized without a backend state
+for layer_name in "${layers[@]}"
+do
+  cd "$layer_name"
+
+  terraform init -backend=false
+  terraform validate
+
+  cd -
+done

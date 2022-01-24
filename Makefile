@@ -5,6 +5,10 @@ init:
 	scripts/init-state
 	scripts/init-layer infra
 
+.PHONY: validate
+validate:
+	scripts/validate-layers
+
 .PHONY: infra
 infra:
 	scripts/apply-layer infra
