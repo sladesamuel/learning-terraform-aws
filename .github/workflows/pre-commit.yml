@@ -15,9 +15,6 @@ jobs:
           tflint_version: v0.29.0
 
       - name: Setup TFSec
-        run: >+
-          curl -L "$(curl -s https://api.github.com/repos/aquasecurity/tfsec/releases/latest | grep -o -E -m 1 "https://.+?tfsec-linux-amd64")" > tfsec \
-            && chmod +x tfsec \
-            && sudo mv tfsec /usr/bin/
+        run: ./scripts/install-hooks-tfsec
 
       - uses: pre-commit/action@v2.0.3
