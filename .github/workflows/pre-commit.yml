@@ -14,8 +14,8 @@ jobs:
         with:
           tflint_version: v0.29.0
 
-      - uses: tfsec/tfsec-sarif-action@main
-        name: Setup TFSec
-        with:
-          sarif_file: tfsef.sarif
+      # - uses: tfsec/tfsec-sarif-action@main
+      #   name: Setup TFSec
+      #   with:
+      #     sarif_file: tfsef.sarif
       - uses: pre-commit/action@v2.0.3
