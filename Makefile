@@ -1,5 +1,9 @@
 SHELL := /bin/bash
 
+.PHONY: install-hooks
+install-hooks:
+	SCRIPTS_DIR=./scripts scripts/install-hooks
+
 .PHONY: init
 init:
 	scripts/init-state

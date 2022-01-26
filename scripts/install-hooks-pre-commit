@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+if ! command -v pre-commit &> /dev/null
+then
+  sudo apt update
+  sudo apt install -y \
+    unzip \
+    software-properties-common \
+    python3 \
+    python3-pip
+
+  python3 -m pip install --upgrade pip
+  pip3 install --no-cache-dir pre-commit
+  pip3 install --no-cache-dir checkov
+fi

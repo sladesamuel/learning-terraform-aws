@@ -1,0 +1,34 @@
+#!/bin/bash
+
+set -e
+
+if [[ -z "$SCRIPTS_DIR" ]]; then
+  echo "SCRIPTS_DIR needs to be set to the scripts folder"
+  exit 1
+fi
+
+# Install hooks scripts based on https://github.com/antonbabenko/pre-commit-terraform
+"$SCRIPTS_DIR/install-hooks-pre-commit"
+"$SCRIPTS_DIR/install-hooks-tflint"
+"$SCRIPTS_DIR/install-hooks-tfsec"
+
+# 2. Install the pre-commit hook globally
+DIR=~/.git-template
+git config --global init.templateDir ${DIR}
+pre-commit init-templatedir -t pre-commit ${DIR}
+
+# 3. Add configs and hooks
+git init
+
+if [[ ! -f ".pre-commit-config.yaml" ]]; then
+  cat <<EOF > .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.62.3 # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_validate
+      - id: terraform_tflint
+      - td: terraform_tfsec
+EOF
+fi

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+if ! command -v tfsec &> /dev/null
+then
+  curl -L "$(curl -s https://api.github.com/repos/aquasecurity/tfsec/releases/latest | grep -o -E -m 1 "https://.+?tfsec-linux-amd64")" > tfsec \
+    && chmod +x tfsec \
+    && sudo mv tfsec /usr/bin/
+fi

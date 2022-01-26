@@ -44,3 +44,13 @@ $ AUTO_APPROVE=true make infra
 ```
 
 > You can also completely remove everything (including local state and lock files) using `make destroy-everything`.
+
+## Contributing
+
+When contributing to this project, make sure you have installed the pre-commit hooks, which will run on every local commit. This will ensure that you are adhering to coding standards, naming conventions and security best practices. To get setup with this easily, from the terminal, run:
+
+```shell
+$ make install-hooks
+```
+
+> You can run the hooks manually using `pre-commit run -a` from the root folder.
