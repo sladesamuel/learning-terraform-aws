@@ -1,9 +1,7 @@
-resource "aws_instance" "app_server" {
-  ami           = "ami-0fc7c2761662b554f"
-  instance_type = "t2.micro"
+resource "aws_vpc" "my_vpc" {
+  cidr_block = "10.150.0.0/16"
 
   tags = {
-    Name = var.instance_name
+    Name = var.vpc_name
   }
 }
-

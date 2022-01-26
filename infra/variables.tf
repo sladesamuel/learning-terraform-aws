@@ -1,5 +1,5 @@
-variable "instance_name" {
-  description = "Value of the Name tag for the EC2 instance"
+variable "vpc_name" {
+  description = "Value of the Name tag for the VPC"
   type        = string
-  default     = "Slade-ExampleAppServerInstance"
+  default     = "Slade-MyVpc"
 }
