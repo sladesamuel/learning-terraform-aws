@@ -10,17 +10,13 @@ resource "aws_kms_key" "dynamodb_table_encryption" {
   enable_key_rotation     = true
 }
 
+#tfsec:ignore:AWS002 - Disabled logging requirement as this is the logs bucket
 resource "aws_s3_bucket" "terraform_state_logs" {
   bucket        = "slade-sandbox-terraform-state-logs"
   force_destroy = true
 
   versioning {
     enabled = true
-  }
-
-  logging {
-    target_bucket = aws_s3_bucket.terraform_state_logs.id
-    target_prefix = "slade-terraform-state-logs-of-logs"
   }
 
   server_side_encryption_configuration {
