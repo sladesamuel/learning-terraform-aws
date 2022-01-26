@@ -14,9 +14,10 @@ jobs:
         with:
           tflint_version: v0.29.0
 
-      - uses: tfsec/tfsec-sarif-action@v0.0.6
-        name: Setup TFSec
-        with:
-          sarif_file: tfsec.sarif
+      - name: Setup TFSec
+        run: >+
+          curl -L "$(curl -s https://api.github.com/repos/aquasecurity/tfsec/releases/latest | grep -o -E -m 1 "https://.+?tfsec-linux-amd64")" > tfsec \
+            && chmod +x tfsec \
+            && sudo mv tfsec /usr/bin/
 
       - uses: pre-commit/action@v2.0.3
