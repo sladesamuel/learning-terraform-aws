@@ -8,4 +8,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
+
+      - uses: terraform-linters/setup-tflint@v1
+        name: Setup TFLint
+        with:
+          tflint_version: v0.29.0
+
+      - uses: tfsec/tfsec-sarif-action@main
+        name: Setup TFSec
+        with:
+          sarif_file: tfsef.sarif
       - uses: pre-commit/action@v2.0.3
