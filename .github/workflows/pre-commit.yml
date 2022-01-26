@@ -17,6 +17,6 @@ jobs:
       - uses: tfsec/tfsec-sarif-action@v0.0.6
         name: Setup TFSec
         with:
-          sarif_file: tfsef.sarif
+          sarif_file: tfsec.sarif
 
       - uses: pre-commit/action@v2.0.3
