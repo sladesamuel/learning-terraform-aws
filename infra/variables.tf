@@ -1,5 +1,5 @@
-variable "vpc_name" {
-  description = "Value of the Name tag for the VPC"
+variable "bucket_name" {
+  description = "Value of the Name tag for the S3 Bucket"
   type        = string
-  default     = "Slade-MyVpc"
+  default     = "MyBucket"
 }
